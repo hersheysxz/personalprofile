@@ -39,6 +39,49 @@ nav a:hover{color:#fff}
 nav a.active{color:#0f172a}
 nav a.active span.pill-bg{opacity:1;transform:scale(1)}
 section{padding:100px 10%}
+
+/* Center important sections */
+#journey,
+#skills,
+#about,
+#contact,
+#certs{
+  text-align:center;
+}
+
+/* Ensure Journey title/content stays centered reliably */
+#journey .section-header,
+#journey h2,
+#journey .timeline,
+#contact h2,
+#certs h2{
+
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+/* Journey section actual markup uses .card.timeline */
+#journey .card.timeline,
+#journey .card.timeline .item{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#journey .card.timeline{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+
+
+
+/* Subtle interactive feel */
+a{
+  transition: opacity .2s ease, border-color .2s ease, transform .2s ease;
+}
+
 .reveal-section{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease}
 .reveal-section.is-visible{opacity:1;transform:translateY(0)}
 
@@ -88,10 +131,16 @@ h1{font-size:4rem;background:linear-gradient(90deg,#fff,var(--p2),#fff);backgrou
 .section-header h2{font-size:3rem;margin:10px 0}
 .section-header p{opacity:.8;line-height:1.8}
 
-.about-highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:18px}
-.about-highlight{padding:16px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:6px}
+.about-highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:6px}
+.about-highlight{padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:6px;transition:transform .2s ease, border-color .2s ease}
+.about-highlight:hover{transform:translateY(-2px);border-color:rgba(255,159,252,.35)}
 .about-highlight strong{color:var(--p3);font-size:.92rem;letter-spacing:.3px;text-transform:uppercase}
 .about-highlight span{opacity:.82;line-height:1.45}
+
+@media(max-width:700px){
+  .about-highlights{grid-template-columns:1fr;}
+}
+
 
 .animated-list{list-style:none;display:grid;gap:12px;margin-top:18px;padding:0}
 .animated-list li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);opacity:0;transform:translateX(-18px);animation:slideIn .7s ease forwards}
@@ -102,17 +151,32 @@ h1{font-size:4rem;background:linear-gradient(90deg,#fff,var(--p2),#fff);backgrou
 .animated-list p{margin:0;line-height:1.55;opacity:.9}
 @keyframes slideIn{to{opacity:1;transform:translateX(0)}}
 
-.skills-wrap{display:flex;justify-content:center;align-items:center;height:500px;position:relative;overflow:visible}
-.center-node{width:140px;height:140px;border-radius:50%;background:var(--p2);display:flex;align-items:center;justify-content:center}
+.skills-wrap{display:flex;justify-content:center;align-items:center;height:500px;position:relative;overflow:visible;transform:translateY(-32px)}
+
+/* Move ONLY the tech-stack label to the left */
+.skills-wrap .center-node{margin-left:0}
+
+
+
+
+
+
+
+
+.center-node{width:140px;height:140px;border-radius:50%;background:var(--p2);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+
 .skill{position:absolute;padding:10px 15px;border-radius:20px;background:rgba(255,255,255,.15);transform:translate(-50%,-50%);white-space:nowrap}
 .skill-logo{width:50px;height:50px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px);box-shadow:0 10px 24px rgba(0,0,0,.18);font-size:1.25rem;color:#fff}
 .skill-logo i{opacity:.95}
 
 /* ===== Journey ===== */
 .timeline{
+max-width:720px;
+margin:0 auto;
 border-left:3px solid var(--p3);
 padding-left:25px;
 }
+
 .timeline h3{
 margin:0;
 font-size:1.1rem;
@@ -190,7 +254,8 @@ mask-image:radial-gradient(ellipse 78% 78% at 50% 50%,#000 62%,transparent 100%)
 @media(max-width:560px){.pc-scene{min-height:390px;transform:scale(.78)}.pc-rig{max-width:640px}.monitor{width:min(560px,96vw)}.monitor-base{width:min(220px,58vw)}}
 
 /* ===== Contact ===== */
-.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch;margin-top:6px}
+
 .contact-card{display:flex;flex-direction:column;gap:12px}
 .contact-link{color:var(--p2);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s, opacity .2s}
 .contact-link:hover{border-color:var(--p2);opacity:.85}
@@ -199,7 +264,7 @@ mask-image:radial-gradient(ellipse 78% 78% at 50% 50%,#000 62%,transparent 100%)
 .contact-note span{opacity:.82;line-height:1.45}
 .contact-map-card{padding:16px;display:flex;flex-direction:column;gap:12px}
 .contact-map-header{font-weight:700;color:var(--p2);letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;opacity:.9;margin-bottom:2px}
-.contact-map{width:100%;min-height:320px;border:0;border-radius:16px;background:#0f172a}
+.contact-map{width:100%;min-height:320px;border:0;border-radius:16px;background:#0f172a;box-shadow:0 18px 45px rgba(0,0,0,.35)}
 
 footer{text-align:center;padding:30px}
 
@@ -216,3 +281,248 @@ footer{text-align:center;padding:30px}
 
 @media(max-width:900px){.folder-grid{grid-template-columns:repeat(2,minmax(220px,1fr));gap:100px 40px}.gallery{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}}
 @media(max-width:700px){.brand{position:fixed;top:10px;left:14px;font-size:.95rem}nav{top:auto;bottom:14px;left:50%;max-width:94vw;overflow-x:auto}nav a{padding:8px 14px;font-size:.8rem;white-space:nowrap}h1{font-size:2.4rem}}
+
+/* ===== About: profile + education ===== */
+.about-layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:22px;
+  align-items:start;
+}
+
+.about-image-card{
+  padding:0;
+}
+
+.profile-pic-wrap{
+  position:relative;
+  padding:12px;
+}
+
+.profile-pic{
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:18px;
+  display:block;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 18px 55px rgba(0,0,0,.25), 0 0 30px rgba(255,159,252,.10);
+  transform:translateZ(0);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.about-image-card:hover .profile-pic{
+  transform:translateY(-4px) scale(1.01);
+  border-color:rgba(255,159,252,.6);
+  box-shadow:0 24px 70px rgba(0,0,0,.32), 0 0 45px rgba(255,159,252,.18);
+}
+
+/* moved under profile image (outside the container) */
+.profile-under{
+  display:none;
+}
+
+
+
+
+
+.about-education{
+  margin-top:14px;
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.about-education h3{
+  margin:0 0 8px;
+  color:var(--p2);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:.78rem;
+}
+
+.about-education p{
+  margin:0;
+  opacity:.9;
+  line-height:1.5;
+  font-weight:600;
+}
+
+@media(max-width:900px){
+  .about-layout{grid-template-columns:1fr;}
+  .about-image-card{max-width:380px;}
+  .about-education{max-width:380px;}
+}
+
+/* ===== About: creative stacked panels (matches updated index.html) ===== */
+.about-stack{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+.panel{
+  position:relative;
+  padding:18px 18px;
+  border-radius:22px;
+  background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(10px);
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  overflow:hidden;
+}
+
+.panel::before{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  background:radial-gradient(320px circle at var(--mx,50%) var(--my,20%), rgba(255,159,252,.22), transparent 60%);
+  opacity:0;
+  transition:opacity .25s ease;
+  pointer-events:none;
+}
+
+.panel:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,159,252,.45);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.panel:hover::before{opacity:1}
+
+.panel-title{
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-size:.75rem;
+  color:var(--p2);
+  margin-bottom:10px;
+}
+
+/* Remove purple "About" label but keep panel layout */
+.panel-title--about{display:none;}
+
+
+.panel-text{
+  opacity:.90;
+  line-height:1.75;
+  font-weight:600;
+  margin:0 0 10px 0;
+}
+
+/* Profile */
+.about-image-card{
+  padding:0;
+}
+
+.profile-frame{
+  position:relative;
+  padding:14px;
+  border-radius:24px;
+  background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(10px);
+  overflow:hidden;
+}
+
+.profile-frame::before{
+  content:'';
+  position:absolute;
+  inset:-40px;
+  background:radial-gradient(circle at 30% 20%, rgba(255,159,252,.35), transparent 55%);
+  pointer-events:none;
+}
+
+.profile-ring{
+  position:absolute;
+  inset:10px;
+  border-radius:20px;
+  border:1px solid rgba(255,159,252,.25);
+  box-shadow:0 0 0 1px rgba(181,134,255,.12) inset;
+  pointer-events:none;
+}
+
+.profile-badge{
+  position:absolute;
+  left:14px;
+  bottom:14px;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:0.95rem;
+  font-weight:800;
+  background:rgba(15,23,42,.45);
+  border:1px solid rgba(255,255,255,.10);
+  color:#fff;
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+}
+
+
+/* Education toggle */
+.edu-toggle{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:transparent;
+  border:0;
+  color:#fff;
+  cursor:pointer;
+  font:inherit;
+}
+
+.edu-toggle::after{
+  content:'›';
+  font-size:1.4rem;
+  line-height:1;
+  color:var(--p2);
+  transform:rotate(0deg);
+  transition:transform .2s ease;
+}
+
+.panel[aria-expanded="true"] .edu-toggle::after{
+  transform:rotate(90deg);
+}
+
+.edu-details{
+  margin-top:10px;
+}
+
+.edu-row{
+  font-weight:800;
+  opacity:.92;
+  line-height:1.6;
+}
+
+.edu-school{
+  color:var(--p2);
+}
+
+.edu-chip{
+  margin-top:10px;
+  width:fit-content;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  opacity:.9;
+  font-weight:700;
+  font-size:.78rem;
+}
+
+/* Make existing animated list look like panel stack items */
+ul.animated-list.panel{
+  padding:18px 18px;
+}
+
+/* Responsive for stack */
+@media(max-width:900px){
+  .about-stack{gap:14px;}
+  .panel{padding:16px 14px;}
+}
+
+
+
+

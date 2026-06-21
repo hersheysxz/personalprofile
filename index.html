@@ -51,26 +51,67 @@
 
 <section id="about" class="reveal-section">
 <h2>About Me</h2><br>
-<div class="card">
-<p>I am a fourth-year Computer Science student who enjoys building practical digital tools with a strong focus on clean design, useful features, and smooth user experiences.</p>
-<p>My work spans web development, mobile applications, databases, and interface design. I like turning ideas into projects that feel polished, understandable, and ready to use in real situations.</p>
-<p>Outside of coding, I spend time refining visuals, learning new technologies, and improving my ability to design systems that are both functional and visually consistent.</p>
-<div class="about-highlights">
-<div class="about-highlight"><strong>Focus</strong><span>Web, mobile, and UI design</span></div>
-<div class="about-highlight"><strong>Strength</strong><span>Organizing data and building usable systems</span></div>
-<div class="about-highlight"><strong>Goal</strong><span>Create thoughtful projects that solve real needs</span></div>
+
+<div class="about-layout">
+
+  <!-- LEFT: PROFILE -->
+  <div class="about-image-card" data-tilt>
+<div class="profile-frame">
+      <div class="profile-pic-wrap">
+        <img src="assets/dp.png" alt="Rachel Regacho" class="profile-pic" />
+      </div>
+      <div class="profile-ring"></div>
+      <div class="profile-badge">Student • Builder</div>
+    </div>
+
+
+  </div>
+
+  <!-- RIGHT: STACKED PANELS -->
+  <div class="about-stack">
+<div class="panel bio-card" data-tilt>
+
+
+
+
+
+
+      <p class="panel-text">I’m a fourth-year Computer Science student who builds practical digital tools with clean design, useful features, and smooth user experiences.</p>
+      <p class="panel-text">I work across web apps, mobile, databases, and interface design—turning ideas into polished, understandable products.</p>
+    </div>
+
+    <div class="panel about-education" data-tilt>
+      <button class="edu-toggle" type="button" aria-expanded="false" aria-controls="edu-details">Education</button>
+      <div id="edu-details" class="edu-details" hidden>
+        <div class="edu-row">Bachelor of Science in Computer Science</div>
+        <div class="edu-row edu-school">DMMSU - SLUC</div>
+      </div>
+      <div class="edu-chip">Tap to expand</div>
+    </div>
+
+    <div class="panel about-highlights" data-tilt>
+      <div class="about-highlight"><strong>Focus</strong><span>Web, mobile, and UI design</span></div>
+      <div class="about-highlight"><strong>Strength</strong><span>Organizing data and building usable systems</span></div>
+      <div class="about-highlight"><strong>Goal</strong><span>Create thoughtful projects that solve real needs</span></div>
+    </div>
+
+    <ul class="animated-list panel" data-tilt>
+      <li><span>01</span><p>Design interfaces that feel intentional instead of generic.</p></li>
+      <li><span>02</span><p>Build systems that keep the user experience clear and fast.</p></li>
+      <li><span>03</span><p>Blend motion, structure, and visuals into one consistent portfolio.</p></li>
+    </ul>
+  </div>
+
 </div>
-<ul class="animated-list">
-<li><span>01</span><p>Design interfaces that feel intentional instead of generic.</p></li>
-<li><span>02</span><p>Build systems that keep the user experience clear and fast.</p></li>
-<li><span>03</span><p>Blend motion, structure, and visuals into one consistent portfolio.</p></li>
-</ul>
-</div><br>
+
+
+<br>
+
 <div class="grid stats">
-<div class="card"><h2 id="p">0</h2>Projects</div>
-<div class="card"><h2 id="c">0</h2>Certifications</div>
-<div class="card"><h2 id="t">0</h2>Technologies</div>
-<div class="card"><h2>BSCS</h2>4th Year</div>
+  <div class="card"><h2 id="p">0</h2>Projects</div>
+  <div class="card"><h2 id="c">0</h2>Certifications</div>
+  <div class="card"><h2 id="t">0</h2>Technologies</div>
+  <div class="card"><h2>BSCS</h2>4th Year</div>
 </div>
 </section>
 
@@ -174,9 +215,10 @@
 </div>
 </section>
 
-<section class="reveal-section">
+<section id="journey" class="reveal-section">
 <h2>Journey</h2><br>
 <div class="card timeline">
+
 <div class="item"><h3>2023</h3>Started BSCS</div>
 <div class="item"><h3>2024</h3>Database</div>
 <div class="item"><h3>2025</h3>Portfolio & Mobile Development</div>

@@ -281,6 +281,23 @@ b.addEventListener('mouseleave',()=>{b.style.transform='translate(0,0)'});
 
 // Subtle float for hero card accent motion
 const heroCard=document.querySelector('.hero .card');
+
+// About: education toggle
+const eduBtn=document.querySelector('.edu-toggle');
+const eduDetails=eduBtn ? document.getElementById('edu-details') : null;
+if(eduBtn && eduDetails){
+  eduBtn.addEventListener('click',()=>{
+    const isHidden = eduDetails.hasAttribute('hidden');
+    if(isHidden){
+      eduDetails.removeAttribute('hidden');
+      eduBtn.setAttribute('aria-expanded','true');
+    } else {
+      eduDetails.setAttribute('hidden','');
+      eduBtn.setAttribute('aria-expanded','false');
+    }
+  });
+}
+
 if(heroCard){
 heroCard.addEventListener('mousemove',e=>{
 const rect=heroCard.getBoundingClientRect();
