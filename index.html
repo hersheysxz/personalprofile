@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rachel Regacho - Advanced Portfolio</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="orb" id="orb1"></div>
+<div class="orb" id="orb2"></div>
+<div class="orb" id="orb3"></div>
+<div class="glow" id="glow"></div>
+<div class="scroll-float-text" aria-hidden="true">Scroll to explore &bull; design that moves &bull; crafted with care</div>
+
+<div class="brand"><span class="dot"></span><span class="brand-name">Rachel Regacho</span></div>
+
+<nav id="pillnav">
+<a href="#about" class="active"><span class="pill-bg"></span>About</a>
+<a href="#skills"><span class="pill-bg"></span>Skills</a>
+<a href="#projects"><span class="pill-bg"></span>Projects</a>
+<a href="#certs"><span class="pill-bg"></span>Certificates</a>
+<a href="#contact"><span class="pill-bg"></span>Contact</a>
+</nav>
+
+<section class="hero">
+<div class="hero-grid">
+<div class="hero-copy">
+<span class="hero-eyebrow">BS Computer Science Student</span>
+<h1>Hi, I'm <span class="accent">Rachel!</span></h1>
+<div class="typing" id="typing"></div>
+<p class="hero-sub">I build web apps, mobile experiences, and interfaces that feel intentional &mdash; from idea to finished product.</p>
+<div class="hero-actions">
+<button class="btn" onclick="document.getElementById('projects').scrollIntoView()">View Projects</button>
+<button class="ghost-btn" type="button" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About Me</button>
+<button class="ghost-btn" type="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+</div>
+</div>
+
+<div class="pc-scene">
+<div class="pc-glow"></div>
+<div class="pc-rig">
+<div class="sketchfab-viewer">
+<iframe title="Desktop Computer" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/561abc2fc95941609fc7bc6f232895c2/embed?autospin=1&autostart=1&transparent=1&dnt=1"> </iframe>
+</div>
+</div>
+</div>
+</section>
+
+<section id="about" class="reveal-section">
+<h2>About Me</h2><br>
+<div class="card">
+<p>I am a fourth-year Computer Science student who enjoys building practical digital tools with a strong focus on clean design, useful features, and smooth user experiences.</p>
+<p>My work spans web development, mobile applications, databases, and interface design. I like turning ideas into projects that feel polished, understandable, and ready to use in real situations.</p>
+<p>Outside of coding, I spend time refining visuals, learning new technologies, and improving my ability to design systems that are both functional and visually consistent.</p>
+<div class="about-highlights">
+<div class="about-highlight"><strong>Focus</strong><span>Web, mobile, and UI design</span></div>
+<div class="about-highlight"><strong>Strength</strong><span>Organizing data and building usable systems</span></div>
+<div class="about-highlight"><strong>Goal</strong><span>Create thoughtful projects that solve real needs</span></div>
+</div>
+<ul class="animated-list">
+<li><span>01</span><p>Design interfaces that feel intentional instead of generic.</p></li>
+<li><span>02</span><p>Build systems that keep the user experience clear and fast.</p></li>
+<li><span>03</span><p>Blend motion, structure, and visuals into one consistent portfolio.</p></li>
+</ul>
+</div><br>
+<div class="grid stats">
+<div class="card"><h2 id="p">0</h2>Projects</div>
+<div class="card"><h2 id="c">0</h2>Certifications</div>
+<div class="card"><h2 id="t">0</h2>Technologies</div>
+<div class="card"><h2>BSCS</h2>4th Year</div>
+</div>
+</section>
+
+<section id="skills" class="reveal-section">
+<h2>Skills Orbit</h2>
+<div class="skills-wrap">
+<div class="orbit-rings">
+<div class="orbit-ring ring-1"></div>
+<div class="orbit-ring ring-2"></div>
+<div class="orbit-ring ring-3"></div>
+</div>
+
+<div class="center-node">Tech<br>Stack</div>
+</div>
+</section>
+
+<section id="projects" class="reveal-section">
+<div class="section-header">
+<span>Portfolio</span>
+<h2>Featured Projects</h2>
+<p>A collection of systems, mobile applications, and web projects developed throughout my Computer Science journey since 2023.</p>
+</div>
+
+<div class="project-toolbar">
+<button class="filter-pill active" type="button" data-filter="all">All</button>
+<button class="filter-pill" type="button" data-filter="mobile">Mobile</button>
+<button class="filter-pill" type="button" data-filter="web">Web</button>
+<button class="filter-pill" type="button" data-filter="database">Database</button>
+<button class="filter-pill" type="button" data-filter="hardware">Hardware</button>
+</div>
+
+<div class="folder-grid">
+<button class="project-folder" data-categories="mobile,web,database" style="--folder-color:#6D47C9" onclick="openModal('EduByte')">
+<span class="folder">
+<span class="folder-back"></span>
+<span class="folder-paper paper-one"><strong>EduByte</strong><small>Educational Mobile App</small></span>
+<span class="folder-paper paper-two"><strong>Dart</strong><small>Flutter Development</small></span>
+<span class="folder-paper paper-three"><strong>MongoDB</strong><small>Cloud Database</small></span>
+<span class="folder-front"></span>
+</span>
+<span class="folder-title">EduByte</span>
+</button>
+
+<button class="project-folder" data-categories="mobile,web" style="--folder-color:#4C2C92" onclick="openModal('FireGuard')">
+<span class="folder">
+<span class="folder-back"></span>
+<span class="folder-paper paper-one"><strong>FireGuard</strong><small>Emergency Mobile App</small></span>
+<span class="folder-paper paper-two"><strong>Android</strong><small>Mobile Computing</small></span>
+<span class="folder-paper paper-three"><strong>UI/UX</strong><small>Modern Interface</small></span>
+<span class="folder-front"></span>
+</span>
+<span class="folder-title">FireGuard</span>
+</button>
+
+<button class="project-folder" data-categories="web,database" style="--folder-color:#161B3D" onclick="openModal('SK Resident Information System')">
+<span class="folder">
+<span class="folder-back"></span>
+<span class="folder-paper paper-one"><strong>SK RIS</strong><small>Resident Records</small></span>
+<span class="folder-paper paper-two"><strong>MySQL</strong><small>Database Management</small></span>
+<span class="folder-paper paper-three"><strong>PHP</strong><small>Backend Development</small></span>
+<span class="folder-front"></span>
+</span>
+<span class="folder-title">SKRIS</span>
+</button>
+
+<button class="project-folder" data-categories="web" style="--folder-color:#D9A4FF" onclick="openModal('Portfolio Website')">
+<span class="folder">
+<span class="folder-back"></span>
+<span class="folder-paper paper-one"><strong>Portfolio</strong><small>Arts Website</small></span>
+<span class="folder-paper paper-two"><strong>React</strong><small>Frontend Framework</small></span>
+<span class="folder-paper paper-three"><strong>Vercel</strong><small>Deployment</small></span>
+<span class="folder-front"></span>
+</span>
+<span class="folder-title">Portfolio</span>
+</button>
+
+<button class="project-folder" data-categories="hardware,web" style="--folder-color:#B497CF" onclick="openModal('Door Locking System')">
+<span class="folder">
+<span class="folder-back"></span>
+<span class="folder-paper paper-one"><strong>Door Lock</strong><small>Access Control</small></span>
+<span class="folder-paper paper-two"><strong>Hardware</strong><small>Smart Security</small></span>
+<span class="folder-paper paper-three"><strong>System</strong><small>Safety Project</small></span>
+<span class="folder-front"></span>
+</span>
+<span class="folder-title">Door Lock</span>
+</button>
+</div>
+</section>
+
+<section id="certs" class="reveal-section">
+<h2>Certification Vault</h2><br>
+<div class="gallery">
+<div class="card cert"><img src="assets/cert1.jpg" alt="Certificate 1"></div>
+<div class="card cert"><img src="assets/cert2.jpg" alt="Certificate 2"></div>
+<div class="card cert"><img src="assets/cert3.jpg" alt="Certificate 3"></div>
+<div class="card cert"><img src="assets/cert4.jpg" alt="Certificate 4"></div>
+<div class="card cert"><img src="assets/cert5.jpg" alt="Certificate 5"></div>
+<div class="card cert"><img src="assets/cert6.jpg" alt="Certificate 6"></div>
+<div class="card cert"><img src="assets/cert7.jpg" alt="Certificate 7"></div>
+<div class="card cert"><img src="assets/cert8.jpg" alt="Certificate 8"></div>
+</div>
+</section>
+
+<section class="reveal-section">
+<h2>Journey</h2><br>
+<div class="card timeline">
+<div class="item"><h3>2023</h3>Started BSCS</div>
+<div class="item"><h3>2024</h3>Database</div>
+<div class="item"><h3>2025</h3>Portfolio & Mobile Development</div>
+<div class="item"><h3>2026</h3>Major Development Projects</div>
+<div class="item"><h3>2027</h3>Graduating Year</div>
+</div>
+</section>
+
+<section id="contact" class="reveal-section">
+<h2>Contact</h2><br>
+<div class="contact-grid">
+<div class="card contact-card">
+<p>Email: <a class="contact-link" href="mailto:rachelregacho645@gmail.com">rachelregacho645@gmail.com</a></p>
+<p>GitHub: <a class="contact-link" href="https://github.com/hersheysxz" target="_blank" rel="noopener">hersheysxz</a></p>
+<p>LinkedIn: <a class="contact-link" href="https://www.linkedin.com/in/rachel-regacho" target="_blank" rel="noopener">Rachel Regacho</a></p>
+<p>Portfolio: <a class="contact-link" href="https://hersheysxz.github.io/" target="_blank" rel="noopener">View Live Site</a></p>
+<div class="contact-note">
+<strong>Open to</strong>
+<span>Internships, collaboration, and creative development work</span>
+</div>
+</div>
+<div class="card contact-map-card">
+<div class="contact-map-header">Location</div>
+<iframe
+  title="Location map"
+  class="contact-map"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=120.32%2C16.61%2C120.42%2C16.67&layer=mapnik"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+></iframe>
+
+</div>
+</div>
+</section>
+
+<footer>&copy; Rachel Regacho Portfolio</footer>
+
+<div class="modal" id="modal">
+<div class="card modal-content">
+<img id="mi" class="modal-image" src="" alt="">
+<h2 id="mt"></h2>
+<p id="md"></p>
+<a id="ml" class="btn modal-link" href="#" target="_blank" rel="noopener">View Project</a>
+<button class="btn" onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
