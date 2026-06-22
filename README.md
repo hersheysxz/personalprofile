@@ -15,7 +15,6 @@ Create an interactive personal portfolio website for **Rachel A. Regacho**, 4th-
 
 #### About Section
 - Student status: 4th year BSCS, DMMMSU South La Union Campus
-- Include personal introduction, technical background, and community involvement (SK Kagawad role)
 
 #### Projects (5 Total)
 1. SK Resident Information System (Database) — Digitized resident records management system
