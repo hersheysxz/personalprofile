@@ -147,7 +147,7 @@ Hosted via GitHub Pages from the `main` branch:
 ## Credits
 
 3D model: ["Entire computer setup"](https://sketchfab.com/3d-models/entire-computer-setup-08952b58afda4349a50e8505167ab4a5) by [LuckyMan2337](https://sketchfab.com/luckyman2337) on Sketchfab.
-- **React Bits** for component patterns and best practices
+- **React Bits** for component patterns and best practices (https://reactbits.dev/get-started/index)
 - **Sketchfab** for 3D asset resources
 - **Google Fonts** for typography (Bebas Neue, Inter, JetBrains Mono)
 
