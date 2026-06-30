@@ -6,6 +6,7 @@
 <title>Rachel Regacho - Advanced Portfolio</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
 </head>
 <body>
 <canvas id="bg"></canvas>
@@ -61,7 +62,7 @@
         <img src="assets/dp.png" alt="Rachel Regacho" class="profile-pic" />
       </div>
       <div class="profile-ring"></div>
-      <div class="profile-badge">Student • Builder</div>
+      <div class="profile-badge">Student &bull; Builder</div>
     </div>
 
 
@@ -76,8 +77,8 @@
 
 
 
-      <p class="panel-text">I’m a fourth-year Computer Science student who builds practical digital tools with clean design, useful features, and smooth user experiences.</p>
-      <p class="panel-text">I work across web apps, mobile, databases, and interface design—turning ideas into polished, understandable products.</p>
+      <p class="panel-text">I'm a fourth-year Computer Science student who builds practical digital tools with clean design, useful features, and smooth user experiences.</p>
+      <p class="panel-text">I work across web apps, mobile, databases, and interface design, turning ideas into polished, understandable products.</p>
     </div>
 
     <div class="panel about-education" data-tilt>
@@ -228,31 +229,218 @@
 </section>
 
 <section id="contact" class="reveal-section">
-<h2>Contact</h2><br>
-<div class="contact-grid">
-<div class="card contact-card">
-<p>Email: <a class="contact-link" href="mailto:rachelregacho645@gmail.com">rachelregacho645@gmail.com</a></p>
-<p>GitHub: <a class="contact-link" href="https://github.com/hersheysxz" target="_blank" rel="noopener">hersheysxz</a></p>
-<p>LinkedIn: <a class="contact-link" href="https://www.linkedin.com/in/rachel-regacho" target="_blank" rel="noopener">Rachel Regacho</a></p>
-<p>Portfolio: <a class="contact-link" href="https://hersheysxz.github.io/" target="_blank" rel="noopener">View Live Site</a></p>
-<div class="contact-note">
-<strong>Open to</strong>
-<span>Internships, collaboration, and creative development work</span>
-</div>
-</div>
-<div class="card contact-map-card">
-<div class="contact-map-header">Location</div>
-<iframe
-  title="Location map"
-  class="contact-map"
-  src="https://www.openstreetmap.org/export/embed.html?bbox=120.32%2C16.61%2C120.42%2C16.67&layer=mapnik"
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-></iframe>
+  <h2>Get In Touch</h2><br>
+  
+  <div class="contact-grid">
+    <!-- CONTACT INFO CARD -->
+    <div class="card contact-card">
+      <h3>Let's Connect</h3>
+      <p>Email: <a class="contact-link" href="mailto:rachelregacho645@gmail.com">rachelregacho645@gmail.com</a></p>
+      <p>GitHub: <a class="contact-link" href="https://github.com/hersheysxz" target="_blank" rel="noopener">hersheysxz</a></p>
+      <p>LinkedIn: <a class="contact-link" href="https://www.linkedin.com/in/rachel-regacho" target="_blank" rel="noopener">Rachel Regacho</a></p>
+      <p>Portfolio: <a class="contact-link" href="https://thefolioproject-7lod.vercel.app/home" target="_blank" rel="noopener">View Live Site</a></p>
+      
+      <div class="contact-note">
+        <strong>Open to</strong>
+        <span>Internships, collaboration, and creative development work</span>
+      </div>
+    </div>
 
-</div>
-</div>
+    <!-- CONTACT FORM CARD (NEW) -->
+    <div class="card contact-form-card">
+      <h3>Send a Message</h3>
+      
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            required 
+            placeholder="Your name"
+            minlength="2"
+            maxlength="100"
+          />
+          <span class="error-msg" id="name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            placeholder="your@email.com"
+          />
+          <span class="error-msg" id="email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone (Optional)</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            placeholder="+63 999 123 4567"
+            maxlength="20"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject *</label>
+          <input 
+            type="text" 
+            id="subject" 
+            name="subject" 
+            required 
+            placeholder="What is this about?"
+            minlength="3"
+            maxlength="200"
+          />
+          <span class="error-msg" id="subject-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            required 
+            placeholder="Your message here..."
+            minlength="10"
+            maxlength="5000"
+            rows="5"
+          ></textarea>
+          <span class="error-msg" id="message-error"></span>
+        </div>
+
+        <div id="form-status" class="form-status" hidden></div>
+
+        <button type="submit" class="btn" id="submit-btn">
+          <span class="btn-text">Send Message</span>
+          <span class="btn-loading" hidden>Sending...</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- LOCATION MAP CARD -->
+    <div class="card contact-map-card" style="grid-column: 1 / -1;">
+      <div class="contact-map-header">Location</div>
+      <iframe
+        title="Location map"
+        class="contact-map"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=120.32%2C16.61%2C120.42%2C16.67&layer=mapnik"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
 </section>
+
+<!-- Add this script before closing </body> tag -->
+<script>
+// Contact Form Handler
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const formStatus = document.getElementById('form-status');
+
+const configuredApiBase = window.PORTFOLIO_CONFIG?.API_BASE_URL || '';
+const API_URL = `${configuredApiBase.replace(/\/$/, '')}/api/contact`;
+
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  // Clear previous status
+  formStatus.hidden = true;
+  formStatus.className = 'form-status';
+  
+  // Validate form
+  if (!contactForm.checkValidity()) {
+    showFieldErrors();
+    return;
+  }
+
+  // Disable button and show loading
+  submitBtn.disabled = true;
+  submitBtn.querySelector('.btn-text').hidden = true;
+  submitBtn.querySelector('.btn-loading').hidden = false;
+
+  try {
+    const formData = {
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      subject: document.getElementById('subject').value.trim(),
+      message: document.getElementById('message').value.trim(),
+      phone: document.getElementById('phone').value.trim()
+    };
+
+    console.log('Sending to:', API_URL);
+    
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const data = await response.json();
+    console.log('Response:', data);
+
+    if (data.success) {
+      // Show success message
+      showStatus('success', data.message);
+      
+      // Reset form
+      contactForm.reset();
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        formStatus.hidden = true;
+      }, 5000);
+    } else {
+      // Show error message
+      const errorMsg = data.errors ? data.errors.join(', ') : data.message;
+      showStatus('error', 'Error: ' + errorMsg);
+    }
+  } catch (error) {
+    console.error('Request error:', error);
+    showStatus('error', 'Failed to send message. Please try again or email directly.');
+  } finally {
+    // Re-enable button
+    submitBtn.disabled = false;
+    submitBtn.querySelector('.btn-text').hidden = false;
+    submitBtn.querySelector('.btn-loading').hidden = true;
+  }
+});
+
+function showStatus(type, message) {
+  formStatus.textContent = message;
+  formStatus.className = 'form-status ' + type;
+  formStatus.hidden = false;
+}
+
+function showFieldErrors() {
+  // Clear all previous errors
+  document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+  
+  const fields = {
+    name: document.getElementById('name'),
+    email: document.getElementById('email'),
+    subject: document.getElementById('subject'),
+    message: document.getElementById('message')
+  };
+
+  for (const [key, field] of Object.entries(fields)) {
+    if (!field.value.trim()) {
+      const errorEl = document.getElementById(key + '-error');
+      if (errorEl) errorEl.textContent = 'This field is required';
+    }
+  }
+}
+</script>
 
 <footer>&copy; Rachel Regacho Portfolio</footer>
 

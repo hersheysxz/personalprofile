@@ -75,7 +75,7 @@ image:"assets/asset3.jpg"
 },
 "Door Locking System":{
 description:"A smart door locking project focused on secure access control. It demonstrates how hardware and software can work together to improve safety, convenience, and controlled entry.",
-image:"assets/asset4.jpg"
+image:"assets/asset2.jpg"
 },
 "Portfolio Website":{
 description:"A creative portfolio project centered on the thing that interests me most: arts. It presents artistic inspiration, visual style, and personal expression through a polished web experience.",

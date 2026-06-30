@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: personalprofile-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: ADMIN_KEY
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: EMAIL_PROVIDER
+        value: gmail
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: EMAIL_FROM
+        sync: false

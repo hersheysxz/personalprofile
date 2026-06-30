@@ -1,58 +1,77 @@
-# Rachel Regacho — Portfolio
+# Rachel Regacho Portfolio
 
-A personal portfolio site for Rachel Regacho, BS Computer Science student at DMMMSU-SLUC. Built with plain HTML, CSS, and JavaScript — no frameworks, no build step.
+Full-stack portfolio with a static frontend for Vercel and an Express API for Render.
 
-🔗 **Live site:** https://hersheysxz.github.io/REPO-NAME/
+## Structure
 
-## Sections
-
-- **Hero** — intro with an embedded 3D computer-setup model (via Sketchfab)
-- **About** — background, focus areas, and a short timeline of skills
-- **Skills Orbit** — animated tech-stack badges
-- **Projects** — filterable folder-style cards (Mobile / Web / Database / Hardware)
-- **Certificates** — certification gallery
-- **Journey** — yearly timeline, 2023–2027
-- **Contact** — email, GitHub, LinkedIn, and a location map
-
-## Tech
-
-- HTML5 / CSS3 (no preprocessor)
-- Vanilla JavaScript (`script.js`) for scroll reveals, the typing effect, project filters, and the modal
-- [Font Awesome](https://fontawesome.com/) for icons (via CDN)
-- [Sketchfab](https://sketchfab.com/) embed for the 3D model in the hero
-- OpenStreetMap embed for the contact section
-
-## Project structure
-
-```
+```text
 .
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-    ├── dp.png
-    └── cert1.jpg … cert8.jpg
+|-- Frontend/              Static portfolio site for Vercel
+|   |-- index.html
+|   |-- style.css
+|   |-- script.js
+|   |-- config.js
+|   |-- vercel.json
+|   `-- assets/
+|-- backend/               Express API for Render
+|   |-- server.js
+|   |-- package.json
+|   |-- package-lock.json
+|   |-- render.yaml
+|   |-- .env.example
+|   |-- config/email.js
+|   |-- models/Contact.js
+|   `-- routes/contact.js
+`-- .gitignore
 ```
 
-## Running locally
+## Local Development
 
-No build step required — just open `index.html` in a browser, or serve the folder locally:
+Start the backend:
 
 ```bash
-python3 -m http.server 8000
+cd backend
+npm install
+copy .env.example .env
+npm run dev
 ```
 
-Then visit `http://localhost:8000`.
+Fill `backend/.env` with your MongoDB Atlas URI and email settings before submitting the contact form.
 
-## Deployment
+Serve the frontend from `Frontend/` with any static server. The default `Frontend/config.js` sends local contact requests to `http://localhost:5000/api/contact`.
 
-Hosted via GitHub Pages from the `main` branch:
-`Settings → Pages → Deploy from a branch → main → / (root)`
+## Deploy Backend To Render
 
-## Credits
+Use `backend/` as the Render root directory.
 
-3D model: ["Entire computer setup"](https://sketchfab.com/3d-models/entire-computer-setup-08952b58afda4349a50e8505167ab4a5) by [LuckyMan2337](https://sketchfab.com/luckyman2337) on Sketchfab.
+- Build command: `npm install`
+- Start command: `npm start`
+- Health check path: `/api/health`
 
-## License
+Required Render environment variables:
 
-© Rachel Regacho. All rights reserved.
+```text
+NODE_ENV=production
+MONGODB_URI=mongodb+srv://...
+FRONTEND_URL=https://your-vercel-domain.vercel.app
+ADMIN_KEY=your-long-random-admin-key
+ADMIN_EMAIL=rachelregacho645@gmail.com
+EMAIL_PROVIDER=gmail
+EMAIL_USER=your-gmail-address@gmail.com
+EMAIL_PASSWORD=your-google-app-password
+EMAIL_FROM=Rachel Portfolio <your-gmail-address@gmail.com>
+```
+
+The included `backend/render.yaml` uses the service name `personalprofile-backend`, which matches the Vercel rewrite destination.
+
+## Deploy Frontend To Vercel
+
+Use `Frontend/` as the Vercel root directory.
+
+- Framework preset: Other
+- Build command: leave empty
+- Output directory: leave empty
+
+`Frontend/vercel.json` rewrites `/api/*` to the Render backend, so the contact form posts to `/api/contact` in production.
+
+If you choose a different Render service URL, update `Frontend/vercel.json`.
