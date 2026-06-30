@@ -40,6 +40,15 @@ Fill `backend/.env` with your MongoDB Atlas URI and email settings before submit
 
 Serve the frontend from `Frontend/` with any static server. The default `Frontend/config.js` sends local contact requests to `http://localhost:5000/api/contact`.
 
+You can also use the included Node static server:
+
+```bash
+cd Frontend
+npm start
+```
+
+Then visit `http://localhost:3000`.
+
 ## Deploy Backend To Render
 
 Use `backend/` as the Render root directory.

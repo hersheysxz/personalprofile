@@ -17,14 +17,14 @@ const skills=["HTML","CSS","JavaScript","React","Python","Java","Dart","MongoDB"
 const wrap=document.querySelector(".skills-wrap");
 skills.forEach((s,k)=>{
 let d=document.createElement("div");
-d.className="skill"; d.innerText=s;
+d.className="skill skill-text"; d.innerText=s;
 wrap.appendChild(d);
 let ang=(360/skills.length)*k;
 setInterval(()=>{
-let r=Math.min(wrap.clientWidth,wrap.clientHeight)*0.36;
+let r=Math.min(wrap.clientWidth,wrap.clientHeight)*0.39;
 let cx=wrap.clientWidth/2;
 let cy=wrap.clientHeight/2;
-let a=(Date.now()/40+ang)*Math.PI/180;
+let a=(Date.now()/55+ang)*Math.PI/180;
 d.style.left=(cx+r*Math.cos(a))+"px";
 d.style.top=(cy+r*Math.sin(a))+"px";
 },20);
@@ -51,10 +51,10 @@ d.innerHTML=`<i class="${skill.icon}"></i>`;
 wrap.appendChild(d);
 let ang=(360/logoSkills.length)*k;
 setInterval(()=>{
-let r=Math.min(wrap.clientWidth,wrap.clientHeight)*0.48;
+let r=Math.min(wrap.clientWidth,wrap.clientHeight)*0.25;
 let cx=wrap.clientWidth/2;
 let cy=wrap.clientHeight/2;
-let a=(Date.now()/40+ang)*Math.PI/180;
+let a=(-Date.now()/65+ang)*Math.PI/180;
 d.style.left=(cx+r*Math.cos(a))+"px";
 d.style.top=(cy+r*Math.sin(a))+"px";
 },20);
@@ -296,6 +296,16 @@ if(eduBtn && eduDetails){
       eduBtn.setAttribute('aria-expanded','false');
     }
   });
+}
+
+const messageBox=document.getElementById('message');
+const messageCount=document.getElementById('message-count');
+if(messageBox && messageCount){
+  const updateMessageCount=()=>{
+    messageCount.textContent=`${messageBox.value.length} / ${messageBox.maxLength || 5000}`;
+  };
+  messageBox.addEventListener('input',updateMessageCount);
+  updateMessageCount();
 }
 
 if(heroCard){

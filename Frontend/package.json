@@ -1,0 +1,13 @@
+{
+  "name": "rachel-portfolio-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static frontend for Rachel Regacho portfolio",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node -e \"console.log('Static site: no build step required')\""
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
