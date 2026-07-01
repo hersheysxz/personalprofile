@@ -445,7 +445,8 @@ contactForm.addEventListener('submit', async (e) => {
     }
   } catch (error) {
     console.error('Request error:', error);
-    showStatus('error', 'Failed to send message. Please try again or email directly.');
+    const message = error?.message || 'Failed to send message. Please try again or email directly.';
+    showStatus('error', 'Error: ' + message);
   } finally {
     // Re-enable button
     submitBtn.disabled = false;
