@@ -74,18 +74,23 @@ router.post('/', [
     };
     await contact.save();
 
-    if (!contact.emailStatus.adminNotificationSent) {
-      console.error('Admin notification email failed');
-      return res.status(502).json({
-        success: false,
-        message: 'Your message was saved, but the email notification could not be sent. Please email Rachel directly if this is urgent.'
+    const emailSent = contact.emailStatus.adminNotificationSent || contact.emailStatus.userConfirmationSent;
+
+    if (!emailSent) {
+      console.error('Email notification failed for contact submission');
+      return res.status(201).json({
+        success: true,
+        message: 'Thank you! Your message was received. Email delivery may be delayed, but the message is stored.',
+        id: contact._id,
+        emailSent: false
       });
     }
 
     return res.status(201).json({
       success: true,
       message: 'Thank you! Your message has been received. Rachel will get back to you soon.',
-      id: contact._id
+      id: contact._id,
+      emailSent: true
     });
   } catch (error) {
     console.error('Contact form error:', error);

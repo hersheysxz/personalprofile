@@ -1,12 +1,24 @@
 const nodemailer = require('nodemailer');
 
+const normalizeEnv = (name) => {
+  const value = process.env[name];
+  if (value === undefined || value === null) {
+    return '';
+  }
+
+  return String(value).trim();
+};
+
 const requiredEnv = (name) => {
-  if (!process.env[name]) {
+  const value = normalizeEnv(name);
+  if (!value) {
     throw new Error(`Missing required environment variable: ${name}`);
   }
 
-  return process.env[name];
+  return value;
 };
+
+const normalizeSecret = (value) => String(value).replace(/\s+/g, '').trim();
 
 const escapeHtml = (value = '') => String(value)
   .replace(/&/g, '&amp;')
@@ -15,7 +27,19 @@ const escapeHtml = (value = '') => String(value)
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#39;');
 
-const getFromAddress = () => process.env.EMAIL_FROM || process.env.EMAIL_USER || requiredEnv('EMAIL_FROM');
+const getFromAddress = () => {
+  const from = normalizeEnv('EMAIL_FROM');
+  if (from) {
+    return from;
+  }
+
+  const user = normalizeEnv('EMAIL_USER');
+  if (user) {
+    return user;
+  }
+
+  return requiredEnv('EMAIL_FROM');
+};
 
 const textFromContact = (contactData) => [
   `Name: ${contactData.name}`,
@@ -35,7 +59,7 @@ const getTransporter = () => {
         service: 'gmail',
         auth: {
           user: requiredEnv('EMAIL_USER'),
-          pass: requiredEnv('EMAIL_PASSWORD')
+          pass: normalizeSecret(requiredEnv('EMAIL_PASSWORD'))
         }
       });
 
@@ -45,7 +69,7 @@ const getTransporter = () => {
         port: 587,
         auth: {
           user: 'apikey',
-          pass: requiredEnv('SENDGRID_API_KEY')
+          pass: normalizeSecret(requiredEnv('SENDGRID_API_KEY'))
         }
       });
 
@@ -56,7 +80,7 @@ const getTransporter = () => {
         secure: process.env.SMTP_SECURE === 'true',
         auth: {
           user: requiredEnv('SMTP_USER'),
-          pass: requiredEnv('SMTP_PASSWORD')
+          pass: normalizeSecret(requiredEnv('SMTP_PASSWORD'))
         }
       });
 
