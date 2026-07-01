@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "outputDirectory": "Frontend",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://personalprofile-backend.onrender.com/api/:path*"
+    }
+  ]
+}
