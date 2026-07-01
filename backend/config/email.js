@@ -51,42 +51,45 @@ const textFromContact = (contactData) => [
 ].join('\n');
 
 const getTransporter = () => {
-  const provider = process.env.EMAIL_PROVIDER || 'gmail';
+  const provider = (process.env.EMAIL_PROVIDER || 'gmail').toLowerCase();
 
-  switch (provider) {
-    case 'gmail':
-      return nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: requiredEnv('EMAIL_USER'),
-          pass: normalizeSecret(requiredEnv('EMAIL_PASSWORD'))
-        }
-      });
-
-    case 'sendgrid':
-      return nodemailer.createTransport({
-        host: 'smtp.sendgrid.net',
-        port: 587,
-        auth: {
-          user: 'apikey',
-          pass: normalizeSecret(requiredEnv('SENDGRID_API_KEY'))
-        }
-      });
-
-    case 'custom':
-      return nodemailer.createTransport({
-        host: requiredEnv('SMTP_HOST'),
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: process.env.SMTP_SECURE === 'true',
-        auth: {
-          user: requiredEnv('SMTP_USER'),
-          pass: normalizeSecret(requiredEnv('SMTP_PASSWORD'))
-        }
-      });
-
-    default:
-      throw new Error('Invalid EMAIL_PROVIDER in environment');
+  if (provider === 'gmail') {
+    return nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: normalizeEnv('EMAIL_USER') || requiredEnv('EMAIL_USER'),
+        pass: normalizeSecret(normalizeEnv('EMAIL_PASSWORD') || requiredEnv('EMAIL_PASSWORD'))
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 10000
+    });
   }
+
+  if (provider === 'sendgrid') {
+    return nodemailer.createTransport({
+      host: 'smtp.sendgrid.net',
+      port: 587,
+      auth: {
+        user: 'apikey',
+        pass: normalizeSecret(requiredEnv('SENDGRID_API_KEY'))
+      }
+    });
+  }
+
+  if (provider === 'custom') {
+    return nodemailer.createTransport({
+      host: requiredEnv('SMTP_HOST'),
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: {
+        user: requiredEnv('SMTP_USER'),
+        pass: normalizeSecret(requiredEnv('SMTP_PASSWORD'))
+      }
+    });
+  }
+
+  throw new Error('Invalid EMAIL_PROVIDER in environment');
 };
 
 const sendAdminNotification = async (contactData) => {
