@@ -6,9 +6,11 @@ require('dotenv').config();
 const app = express();
 app.set('trust proxy', 1);
 
+const normalizeOrigin = (value = '') => String(value).trim().replace(/\/+$/, '');
+
 const allowedOrigins = (process.env.FRONTEND_URL || '')
   .split(',')
-  .map(origin => origin.trim())
+  .map(origin => normalizeOrigin(origin))
   .filter(Boolean);
 
 if (process.env.NODE_ENV !== 'production') {
@@ -20,9 +22,12 @@ if (process.env.NODE_ENV !== 'production') {
   );
 }
 
+const normalizedAllowedOrigins = new Set(allowedOrigins.map(origin => normalizeOrigin(origin)));
+
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin) || (process.env.NODE_ENV !== 'production' && origin === 'null')) {
+    const normalizedOrigin = normalizeOrigin(origin);
+    if (!origin || normalizedAllowedOrigins.has(normalizedOrigin) || (process.env.NODE_ENV !== 'production' && origin === 'null')) {
       return callback(null, true);
     }
 
