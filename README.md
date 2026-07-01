@@ -1,86 +1,160 @@
-# Rachel Regacho Portfolio
+# Rachel Regacho — Portfolio
 
-Full-stack portfolio with a static frontend for Vercel and an Express API for Render.
+A personal portfolio site for Rachel Regacho, BS Computer Science student at DMMMSU-SLUC. Built with plain HTML, CSS, and JavaScript — no frameworks, no build step.
 
-## Structure
+🔗 **Live site:** https://hersheysxz.github.io/personalprofile/
 
-```text
+## Build Prompt
+
+This portfolio was built using the following specification:
+
+### Project Overview
+Create an interactive personal portfolio website for **Rachel A. Regacho**, 4th-year BSCS student at DMMMSU South La Union Campus. The site should showcase five completed projects, nine+ certifications, twelve technical skills, and professional experience in a modern, interactive format suitable for GitHub Pages deployment.
+
+### Content Requirements
+
+#### About Section
+- Student status: 4th year BSCS, DMMMSU South La Union Campus
+
+#### Projects (5 Total)
+1. SK Resident Information System (Database) — Digitized resident records management system
+2. Edubyte (Mobile App) — Education-focused mobile application
+3. FireGuard (Mobile App) — Emergency response mobile application  
+4. Door Locking System (Arduino) — Embedded systems/IoT hardware project
+5. Portfolio Website (Web) — Live deployment at thefolioproject (Vercel), source on GitHub with tech stack: Express, MongoDB, Vercel, Render
+
+#### Certifications (9+)
+- Introduction to Modern AI
+- Introduction to Data Science
+- Introduction to IoT and Digital Transformation
+- Data Science Essentials with Python
+- AI Fluency: Framework and Foundations
+- The Hour of Code
+- OJT Certificate of Completion and Participation
+- Foundation of AI & Data Science
+- Additional certifications as available
+
+#### Technical Skills (12)
+HTML, CSS, JavaScript, Python, MySQL, C/C++, Express, Dart, Java, MongoDB, plus development tools (GitHub, Vercel, Visual Studio, MongoDB Atlas, Render)
+
+#### Contact Information
+- Email: rachelregacho645@gmail.com
+- GitHub: https://github.com/hersheysxz
+- LinkedIn: https://www.linkedin.com/in/rachel-regacho-050540418
+- Facebook: https://www.facebook.com/share/1D7vRYt4Vo/?mibextid=wwXIfr
+
+### Interactive Features Required
+
+1. **Custom Cursor** (Desktop, fine-pointer only)
+   - Animated dot + lagging ring that expands on hover
+   - Shows contextual labels over interactive elements ("GO", "VIEW", "OPEN")
+   - Automatically disabled on touch devices and for users with `prefers-reduced-motion` set
+
+2. **3D Tilt Animation** (Desktop, motion-OK only)
+   - Project cards, certificate frames, contact cards, and profile photo tilt toward cursor on hover
+   - Maximum 7-degree rotation with perspective(800px)
+   - Smooth spring-back to flat on mouse-leave
+   - Respects touch and reduced-motion preferences
+
+3. **Scroll-Reveal Animations**
+   - Section headings use clip-path wipe effect (left to right)
+   - Grouped items (skill chips, certificate frames, project cards) cascade in with staggered 70ms delays
+   - Timeline clips visually "grow" from zero width into place when section scrolls into view
+   - All animations respect `prefers-reduced-motion`
+
+4. **Certificate Lightbox**
+   - Click any certificate frame to open full-size overlay
+   - Display certificate image, title, issuer, and completion date
+   - Close via dedicated button, Escape key, or clicking outside the image
+   - Manage focus properly (move to close button on open, restore focus on close)
+
+5. **Sticky Navigation**
+   - Header nav bar with brand, current section timecode/label, chapter links
+   - Updates in real-time as user scrolls through sections
+   - Mobile hamburger menu toggle for small screens
+   - All chapter links have active state styling
+
+6. **Timeline Visualization**
+   - Multi-track NLE-style layout showing education and work experience
+   - Clips positioned and sized proportionally to actual year ranges (2011–2026)
+   - Hover effects with brightness increase and subtle lift
+   - Responsive horizontal scroll on mobile
+
+### Accessibility Requirements
+- Keyboard navigation: all interactive elements reachable via Tab, focus-visible outlines
+- Semantic HTML with proper landmarks (<header>, <main>, <footer>, <section>)
+- Alt text on all images
+- ARIA labels for dynamic content (cursor ring, lightbox)
+- Respects `prefers-reduced-motion: reduce` (disables animations, shows all content immediately)
+- Respects `pointer: coarse` (disables custom cursor on touch devices)
+- Color contrast meets WCAG AA standards
+
+### Technical Specifications
+- **Stack**: Vanilla HTML5, CSS3, JavaScript — no frameworks or build tools
+- **Version Control**: Git with meaningful commit history
+- **Hosting**: GitHub Pages ready
+- **Responsive Breakpoints**: Mobile (390px), Tablet (768px), Desktop (1440px+)
+- **Browser Support**: Modern evergreen browsers (Chrome, Firefox, Safari, Edge)
+- **Performance**: Optimized images, no external dependencies except Google Fonts
+- **File Structure**:
+
+
+## Sections
+
+- **Hero** — intro with an embedded 3D computer-setup model (via Sketchfab)
+- **About** — background, focus areas, and a short timeline of skills
+- **Skills Orbit** — animated tech-stack badges
+- **Projects** — filterable folder-style cards (Mobile / Web / Database / Hardware)
+- **Certificates** — certification gallery
+- **Journey** — yearly timeline, 2023–2027
+- **Contact** — email, GitHub, LinkedIn, and a location map
+
+## Tech
+
+- HTML5 / CSS3 (no preprocessor)
+- Vanilla JavaScript (`script.js`) for scroll reveals, the typing effect, project filters, and the modal
+- [Font Awesome](https://fontawesome.com/) for icons (via CDN)
+- [Sketchfab](https://sketchfab.com/) embed for the 3D model in the hero
+- OpenStreetMap embed for the contact section
+
+## Project structure
+
+```
 .
-|-- Frontend/              Static portfolio site for Vercel
-|   |-- index.html
-|   |-- style.css
-|   |-- script.js
-|   |-- config.js
-|   |-- vercel.json
-|   `-- assets/
-|-- backend/               Express API for Render
-|   |-- server.js
-|   |-- package.json
-|   |-- package-lock.json
-|   |-- render.yaml
-|   |-- .env.example
-|   |-- config/email.js
-|   |-- models/Contact.js
-|   `-- routes/contact.js
-`-- .gitignore
+├── index.html
+├── style.css
+├── script.js
+└── assets/
+    ├── dp.png
+    └── cert1.jpg … cert8.jpg
 ```
 
-## Local Development
+## Running locally
 
-Start the backend:
+No build step required — just open `index.html` in a browser, or serve the folder locally:
 
 ```bash
-cd backend
-npm install
-copy .env.example .env
-npm run dev
+python3 -m http.server 8000
 ```
 
-Fill `backend/.env` with your MongoDB Atlas URI and email settings before submitting the contact form.
+Then visit `http://localhost:8000`.
 
-Serve the frontend from `Frontend/` with any static server. The default `Frontend/config.js` sends local contact requests to `http://localhost:5000/api/contact`.
+## Deployment
 
-You can also use the included Node static server:
+Hosted via GitHub Pages from the `main` branch:
+`Settings → Pages → Deploy from a branch → main → / (root)`
 
-```bash
-cd Frontend
-npm start
-```
+## Credits
 
-Then visit `http://localhost:3000`.
+3D model: ["Entire computer setup"](https://sketchfab.com/3d-models/entire-computer-setup-08952b58afda4349a50e8505167ab4a5) by [LuckyMan2337](https://sketchfab.com/luckyman2337) on Sketchfab.
+- **React Bits** for component patterns and best practices (https://reactbits.dev/get-started/index)
+- **Sketchfab** for 3D asset resources
+- **Google Fonts** for typography (Bebas Neue, Inter, JetBrains Mono)
 
-## Deploy Backend To Render
+## AI Used
+- **GitHub Copilot** for code suggestions and acceleration
+- **Claude (Anthropic)** for architecture guidance and interactive feature design
+- **Codex (OpenAI)** for utility function generation
 
-Use `backend/` as the Render root directory.
-
-- Build command: `npm install`
-- Start command: `npm start`
-- Health check path: `/api/health`
-
-Required Render environment variables:
-
-```text
-NODE_ENV=production
-MONGODB_URI=mongodb+srv://...
-FRONTEND_URL=https://your-vercel-domain.vercel.app
-ADMIN_KEY=your-long-random-admin-key
-ADMIN_EMAIL=rachelregacho645@gmail.com
-EMAIL_PROVIDER=gmail
-EMAIL_USER=your-gmail-address@gmail.com
-EMAIL_PASSWORD=your-google-app-password
-EMAIL_FROM=Rachel Portfolio <your-gmail-address@gmail.com>
-```
-
-The included `backend/render.yaml` uses the service name `personalprofile-backend`, which matches the Vercel rewrite destination.
-
-## Deploy Frontend To Vercel
-
-Use `Frontend/` as the Vercel root directory.
-
-- Framework preset: Other
-- Build command: leave empty
-- Output directory: leave empty
-
-`Frontend/vercel.json` rewrites `/api/*` to the Render backend, so the contact form posts to `/api/contact` in production.
-
-If you choose a different Render service URL, update `Frontend/vercel.json`.
+## License
+© Rachel Regacho. All rights reserved.
