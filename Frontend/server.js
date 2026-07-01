@@ -4,6 +4,9 @@ const path = require('path');
 
 const root = __dirname;
 const port = process.env.PORT || 3000;
+const apiBaseUrl = process.env.API_BASE_URL || (process.env.NODE_ENV === 'production'
+  ? 'https://personalprofile-4wet.onrender.com'
+  : 'http://localhost:5000');
 
 const contentTypes = {
   '.css': 'text/css; charset=utf-8',
